@@ -1,0 +1,40 @@
+1) OperationalError: (_mysql_exceptions.OperationalError) (1045, "Access denied for user 'ODBC'@'localhost' (using password: YES)")
+
+config = {
+                'host': 'localhost',
+                'database': db, # we got db as an argument
+                'user': '',
+                'password': 'root',
+                'port': '3306' # change the port to match the port your SQL server is running on
+}
+
+answer: user must have a valid value
+---> 'user': 'root'
+
+2) DATABASE_URI = "mysql://{}:{}@127.0.0.1:{}/{}".format(config['user'], config['password'], config['port'],
+config['database'])
+KeyError: 'database'
+
+config = {
+                'host': 'localhost',
+                '': db, # we got db as an argument
+                'user': 'root',
+                'password': 'root',
+                'port': '3306' # change the port to match the port your SQL server is running on
+}
+
+answer: must provide string 'database' as key for db
+---> 'database': db
+
+3) ValueError: invalid literal for int() with base 10: 'False' 
+
+config = {
+                'host': 'localhost',
+                'database': db, # we got db as an argument
+                'user': 'root',
+                'password': 'root',
+                'port': False # change the port to match the port your SQL server is running on
+}
+
+answer: port must contain string of numbers not a boolean
+---> 'port': '3306'
